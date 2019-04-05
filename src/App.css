@@ -1,0 +1,121 @@
+.title {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.category {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.name {
+  font-size: 1.35em;
+  font-weight: 500;
+}
+
+.other-text {
+  font-size: 0.6em;
+  color: #999;
+}
+
+.small-text {
+  font-size: 0.7em;
+  font-weight: 300;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.left-line {
+  border-left: 1px solid #999;
+}
+
+.box {
+  border-width: 1px;
+  padding: 10px;
+}
+
+.top {
+  padding-top: 10px;
+}
+
+.border {
+  border-color: black;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+.background {
+  background: rgb(2,0,36);
+  background: linear-gradient(228deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 15%, rgba(0,212,255,1) 100%);
+  height: 100%;
+  min-height: 100vh;
+  margin-top: 0px !important;
+}
+
+.allshade {
+  background: #eee;
+}
+
+.shade1 {
+
+}
+
+.shade2 {
+
+}
+
+.shade3 {
+
+}
+
+.one {
+  margin: auto;
+  width: 70%;
+}
+
+.grid-twos {
+  display: grid;
+  width: 70%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
+}
+
+.grid-two {
+  padding: 0px;
+}
+
+.large-input {
+  width: 400px;
+  height: 20px;
+}
+
+.small-input {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+.over {
+  margin-left: 20px;
+}
+
+.button-click {
+  width: 150px;
+  height: 20px;
+  padding: 10px;
+}

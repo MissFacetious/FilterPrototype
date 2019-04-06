@@ -15,8 +15,8 @@ class App extends Component {
 
     this.state = {
       classes: Classes,
-      course: "*",
       takingClasses: [],
+      filter: []
     };
 
     //this.onChange = this.onChange.bind(this);
@@ -25,9 +25,11 @@ class App extends Component {
     this.findClass = this.findClass.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onFilter = this.onFilter.bind(this);
+    this.findFilter = this.findFilter.bind(this);
   }
 
   onSearch(search) {
+    // do we include the filtered results too?
     var newClasses = [];
     for (var i=0; i < Classes.length; i++) {
       var course = Classes[i];
@@ -38,8 +40,64 @@ class App extends Component {
     this.setState({classes: newClasses});
   }
 
-  onFilter(filter) {
-    console.log(filter);
+  onFilter(filter, include) {
+    // do we include the search results too?
+    // add filter to the list of things to filter
+    var currentFilters = this.state.filter;
+    var newCurrentFilters = [];
+    //console.log(filter);
+
+    // find out if the filter is adding or removing
+    if (include) {
+      // add to filter
+      if (!this.findFilter(currentFilters, filter)) {
+        newCurrentFilters.push(filter);
+      }
+    }
+    else {
+      // remove from filter
+      if (this.findFilter(currentFilters, filter)) {
+        var index = currentFilters.indexOf(filter);
+        currentFilters.splice(index, 1);
+      }
+    }
+
+    for (var f=0; f < currentFilters.length; f++) {
+      newCurrentFilters.push(currentFilters[f]);
+    }
+
+    var newClasses = [];
+    for (var i=0; i < Classes.length; i++) {
+      var course = Classes[i];
+      for (var f=0; f < newCurrentFilters.length; f++) {
+        if (course.content.includes(newCurrentFilters[f])) {
+          if (!this.findClass(newClasses, course.label)) {
+            newClasses.push(course);
+          }
+        }
+        if (course.skills.includes(newCurrentFilters[f])) {
+          if (!this.findClass(newClasses, course.label)) {
+            newClasses.push(course);
+          }
+        }
+        if (course.specialization.includes(newCurrentFilters[f])) {
+          if (!this.findClass(newClasses, course.label)) {
+            newClasses.push(course);
+          }
+        }
+        //if (course.rating.includes(newCurrentFilters[f])) {
+        //  if (!this.findClass(newClasses, course.label)) {
+        //    newClasses.push(course);
+        //  }
+        //}
+      }
+    }
+
+    if (newClasses.length == 0) {
+      // default to all
+      newClasses = Classes;
+    }
+    this.setState({classes: newClasses, filter: newCurrentFilters});
   }
 
   onClose() {
@@ -87,6 +145,17 @@ class App extends Component {
     });
     */
     return myCourse;
+  }
+
+  findFilter(filters, value) {
+    var myFilter = null;
+    for (var i=0; i < filters.length; i++) {
+      var filter = filters[i];
+      if (filter == value) {
+        myFilter = filter;
+      }
+    }
+    return myFilter;
   }
 
   componentDidMount() {

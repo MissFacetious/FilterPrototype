@@ -10,8 +10,8 @@ var Checkbox = createClass({
   },
 
   onFilter: function(event) {
+    this.props.onFilter(event.currentTarget.dataset.value, !this.state.checked);
     this.setState({checked: !this.state.checked});
-    this.props.onFilter(event.currentTarget.dataset.value);
   },
 
   render() {

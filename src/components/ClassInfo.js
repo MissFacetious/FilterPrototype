@@ -28,7 +28,7 @@ var ClassInfo = createClass({
 	printSkills(skills) {
 		var images = '';
 		for (var i=0; i < skills.length; i++) {
-			switch (skills[i] ){
+			switch (skills[i]) {
 				case "Writing": {
 					images += '<img src="./images/book_writing_Blue.png" width="35" height="35" alt="'+skills[i]+'"> ';
 					break;

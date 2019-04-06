@@ -3,37 +3,30 @@ import createClass from 'create-react-class';
 
 var Search = createClass({
 
-    //this.state = {
-    //  availableClasses: null,
-    //  semester: this.props.semester,
-    //},
-
     getInitialState () {
       return {
-        removeSelected: true,
-        disabled: false,
-        stayOpen: false,
-        value: [],
-        rtl: false,
       };
   },
 
-  onChange ({target}) {
+  onSearch ({target}) {
       //this.setState({ value });
       console.log("value in Search");
       //console.log(target.value);
-      this.props.onChange(target.value);
+      this.props.onSearch(target.value);
   },
 
-  handleClick (value) {
-    console.log(value);
+  clickSearch () {
+    var element = document.getElementById("searchValue");
+    if (element != null) {
+      this.props.onSearch(element.value);
+    }
   },
 
   render() {
     return (
       <div className="box shade1 center">
-        <input className="large-input" type="text" onChange={this.onChange} />
-        <input className="button-click" type="submit" value="search" onClick={this.handleClick} />
+        <input id="searchValue" className="large-input" type="text" onChange={this.onSearch} />
+        <input className="button-click" type="submit" value="Search" onClick={this.clickSearch} />
       </div>
     )}
   });

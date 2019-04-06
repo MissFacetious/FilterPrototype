@@ -4,26 +4,27 @@ import PropTypes from 'prop-types';
 import './../App.css';
 
 var Checkbox = createClass({
+
   getInitialState: function() {
     return {checked: false}
   },
-  handleCheck: function() {
+
+  onFilter: function(event) {
     this.setState({checked: !this.state.checked});
-  },
-  render: function() {
-
+    this.props.onFilter(event.currentTarget.dataset.value);
   },
 
-	render() {
+  render() {
 		var msg;
 		if (this.state.checked) {
 			msg = "checked";
 		} else {
 			msg = "unchecked";
 		}
+    var label = this.props.label;
 	  return (
 	  	<p className="left">
-	    	<input className="small-input" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/><span className="over">{this.props.label}</span>
+	    	<input className="small-input" type="checkbox" data-value={label} onChange={this.onFilter} defaultChecked={this.state.checked}/><span className="over">{label}</span>
 	    </p>
 	  );
 	}

@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import createClass from 'create-react-class';
-import PropTypes from 'prop-types';
-import './../App.css';
 
-var Item = createClass({
-	displayName: 'Item',
-	propTypes: {
-		label: PropTypes.string,
-	},
+var ClassInfo = createClass({
+
 	getInitialState () {
 		return {
-			value: [],
 		};
 	},
-	handleClick() {
-		var key = this.props.options.key;
-		this.props.onClick(key);
-	},
+
+	handleClick (event) {
+    this.props.addClass(event.currentTarget.dataset.value);
+  },
+
 	printRating(rating) {
 		var star = '<span alt="rating ' + rating +' out of 5">';
 		for (var i=1; i <= 5; i++) {
@@ -151,7 +146,7 @@ var Item = createClass({
 								<p className="left name">{label}</p>
 							</td>
 							<td className="right">
-								<input className="button-click" type="button" value="Take This Class"/>
+								<input className="button-click" data-value={label} type="button" value="Take This Class" onClick={this.handleClick} />
 								<p className="other-text right">{classSize} out of 350 spaces available</p>
 							</td>
 						</tr>
@@ -178,4 +173,4 @@ var Item = createClass({
 		}
 	}
 });
-export default Item;
+export default ClassInfo;

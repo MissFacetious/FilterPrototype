@@ -24,7 +24,7 @@ var Checkbox = createClass({
     var label = this.props.label;
 	  return (
 	  	<p className="left">
-	    	<input className="small-input" type="checkbox" data-value={label} onChange={this.onFilter} defaultChecked={this.state.checked}/><span className="over">{label}</span>
+	    	<input className="small-input check" type="checkbox" data-value={label} onChange={this.onFilter} defaultChecked={this.state.checked}/><span className="over">{label}</span>
 	    </p>
 	  );
 	}

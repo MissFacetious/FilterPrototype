@@ -26,6 +26,7 @@ class App extends Component {
     this.onSearch = this.onSearch.bind(this);
     this.onFilter = this.onFilter.bind(this);
     this.findFilter = this.findFilter.bind(this);
+    this.clearAll = this.clearAll.bind(this);
   }
 
   onSearch(search) {
@@ -93,6 +94,7 @@ class App extends Component {
       }
     }
 
+    // this return all even when our filter has none, maybe take care of this case?
     if (newClasses.length == 0) {
       // default to all
       newClasses = Classes;
@@ -158,6 +160,16 @@ class App extends Component {
     return myFilter;
   }
 
+  clearAll() {
+    var list = document.getElementsByClassName("check");
+    for (var l=0; l < list.length; l++) {
+      var element = list[l];
+      element.checked = false;
+    }
+    //this.onFilter("", false);
+    this.onSearch("");
+  }
+
   componentDidMount() {
     this.onSearch("");
   }
@@ -175,6 +187,11 @@ class App extends Component {
         options={lc}
         removeClass={this.addClass} />
     );
+    var plural = "";
+    if (listItems.length == 0) plural = "Returned No Classes";
+    else if (listItems.length == 1) plural = "Returned " + listItems.length + " Class";
+    else plural = "Returned " + listItems.length + " Classes";
+
     return (
       <div className="background">
       <div id="panel" className="hidden panel panel-large">
@@ -198,7 +215,7 @@ class App extends Component {
           <div className="grid-two top">
           <div className="box border shade3">
             <p className="title">Filter Classes</p>
-            <input className="button-click" type="button" value="Clear All" />
+            <input className="button-click" type="button" value="Clear All" onClick={this.clearAll} />
             <Accordion allowZeroExpanded="true">
               <AccordionItem>
                 <AccordionItemHeading>
@@ -271,6 +288,7 @@ class App extends Component {
             <div className="listitem">
       				<div className="box shade2 left-line">
       					<p className="title">Results</p>
+                <p>{plural}</p>
       					<div>{listItems}</div>
       				</div>
             </div>

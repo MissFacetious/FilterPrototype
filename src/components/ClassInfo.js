@@ -131,8 +131,24 @@ var ClassInfo = createClass({
 			var skills = this.props.options.skills;
 			var content = this.props.options.content;
 			var rating = this.props.options.rating;
-			var classSize = this.props.options.classSize;
 			var description = this.props.options.description;
+
+			var classSize = this.props.options.classSize;
+			var enrolled = this.props.options.enrolled;
+			var waitingList = this.props.options.waitingList;
+
+			var availableMessage = "";
+			if (enrolled < classSize) {
+				availableMessage = (classSize - enrolled) + " out of " + classSize + " spaces available";
+			}
+			else if (enrolled >= classSize && enrolled < (waitingList+classSize)) {
+				availableMessage = (waitingList+classSize-enrolled) + " out of " + waitingList + " on waiting list";
+			}
+			else {
+				// the class is full
+				availableMessage = "This class is full";
+			}
+
 			// use the ul and li tags for creating rows and columns in the view
 			return (
 				<div className="entry">
@@ -147,7 +163,7 @@ var ClassInfo = createClass({
 							</td>
 							<td className="right">
 								<input className="button-click" data-value={label} type="button" value="Take This Class" onClick={this.handleClick} />
-								<p className="other-text right">{classSize} out of 350 spaces available</p>
+								<p className="other-text right">{availableMessage}</p>
 							</td>
 						</tr>
 						</tbody>

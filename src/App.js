@@ -91,6 +91,16 @@ class App extends Component {
         //    newClasses.push(course);
         //  }
         //}
+        // if the amount of people enrolled is less than the class size, we have room
+        if (filter == "Space Available" && course.enrolled < course.classSize) {
+          console.log(filter + " " + course.enrolled);
+          newClasses.push(course);
+        }
+        // if the amoutn of people enrolled is equal or more than the class size,
+        // check the waitlist has room
+        if (filter == "Waiting List Only" && course.enrolled >= course.classSize && (course.enrolled < (course.waitingList + course.classSize))) {
+          newClasses.push(course);
+        }
       }
     }
 
@@ -254,6 +264,17 @@ class App extends Component {
                   <Checkbox label="Ethics" onFilter={this.onFilter} />
                   <Checkbox label="Command Line" onFilter={this.onFilter} />
                   <Checkbox label="Problem Solving" onFilter={this.onFilter} />
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <span className="category left">Availabity</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <Checkbox label="Space Available" onFilter={this.onFilter} />
+                  <Checkbox label="Waiting List Only" onFilter={this.onFilter} />
                 </AccordionItemPanel>
               </AccordionItem>
                 <AccordionItem>

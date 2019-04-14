@@ -26,6 +26,7 @@ class App extends Component {
     this.onSearch = this.onSearch.bind(this);
     this.onFilter = this.onFilter.bind(this);
     this.findFilter = this.findFilter.bind(this);
+    this.alreadyIn = this.alreadyIn.bind(this);
     this.clearAll = this.clearAll.bind(this);
   }
 
@@ -81,24 +82,39 @@ class App extends Component {
             newClasses.push(course);
           }
         }
-        if (course.specialization.includes(newCurrentFilters[f])) {
+        if (course.topics.includes(newCurrentFilters[f])) {
           if (!this.findClass(newClasses, course.label)) {
             newClasses.push(course);
           }
         }
-        //if (course.rating.includes(newCurrentFilters[f])) {
-        //  if (!this.findClass(newClasses, course.label)) {
-        //    newClasses.push(course);
-        //  }
-        //}
+        if (course.degrees.includes(newCurrentFilters[f])) {
+          if (!this.findClass(newClasses, course.label)) {
+            newClasses.push(course);
+          }
+        }
+        if (newCurrentFilters[f] == "Over 2 Stars" && course.rating > 2) {
+          if (!this.alreadyIn(newClasses, course)) {
+            newClasses.push(course);
+          }
+        }
+        if (newCurrentFilters[f] == "Over 3 Stars" && course.rating > 3) {
+          if (!this.alreadyIn(newClasses, course)) {
+            newClasses.push(course);
+          }
+        }
+        if (newCurrentFilters[f] == "Over 4 Stars" && course.rating > 4) {
+          if (!this.alreadyIn(newClasses, course)) {
+            newClasses.push(course);
+            console.log("add over 4 stars" + course.key);
+          }
+        }
         // if the amount of people enrolled is less than the class size, we have room
-        if (filter == "Space Available" && course.enrolled < course.classSize) {
-          console.log(filter + " " + course.enrolled);
+        if (newCurrentFilters[f] == "Space Available" && course.enrolled < course.classSize) {
           newClasses.push(course);
         }
         // if the amoutn of people enrolled is equal or more than the class size,
         // check the waitlist has room
-        if (filter == "Waiting List Only" && course.enrolled >= course.classSize && (course.enrolled < (course.waitingList + course.classSize))) {
+        if (newCurrentFilters[f] == "Waiting List Only" && course.enrolled >= course.classSize && (course.enrolled < (course.waitingList + course.classSize))) {
           newClasses.push(course);
         }
       }
@@ -170,6 +186,15 @@ class App extends Component {
     return myFilter;
   }
 
+  alreadyIn(classes, course) {
+    for (var i=0; i < classes.length; i++) {
+      if (course == classes[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   clearAll() {
     var list = document.getElementsByClassName("check");
     for (var l=0; l < list.length; l++) {
@@ -230,6 +255,20 @@ class App extends Component {
               <AccordionItem>
                 <AccordionItemHeading>
                   <AccordionItemButton>
+                    <span className="category left">Degrees</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <Checkbox label="Computing Science" onFilter={this.onFilter} />
+                  <Checkbox label="Machine Learning" onFilter={this.onFilter} />
+                  <Checkbox label="Robotics" onFilter={this.onFilter} />
+                  <Checkbox label="Computer Interaction" onFilter={this.onFilter} />
+                  <Checkbox label="Security" onFilter={this.onFilter} />
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
                     <span className="category left">Content</span>
                   </AccordionItemButton>
                 </AccordionItemHeading>
@@ -256,14 +295,23 @@ class App extends Component {
                   <Checkbox label="Reading" onFilter={this.onFilter} />
                   <Checkbox label="Algebra" onFilter={this.onFilter} />
                   <Checkbox label="Calculus" onFilter={this.onFilter} />
+                  <Checkbox label="Debugging" onFilter={this.onFilter} />
+                  <Checkbox label="Command Line" onFilter={this.onFilter} />
+                  <Checkbox label="Problem Solving" onFilter={this.onFilter} />
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <span className="category left">Topics</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
                   <Checkbox label="Gaming" onFilter={this.onFilter} />
                   <Checkbox label="VR" onFilter={this.onFilter} />
                   <Checkbox label="Robotics" onFilter={this.onFilter} />
-                  <Checkbox label="Debugging" onFilter={this.onFilter} />
                   <Checkbox label="Mobile" onFilter={this.onFilter} />
                   <Checkbox label="Ethics" onFilter={this.onFilter} />
-                  <Checkbox label="Command Line" onFilter={this.onFilter} />
-                  <Checkbox label="Problem Solving" onFilter={this.onFilter} />
                 </AccordionItemPanel>
               </AccordionItem>
               <AccordionItem>
@@ -277,31 +325,18 @@ class App extends Component {
                   <Checkbox label="Waiting List Only" onFilter={this.onFilter} />
                 </AccordionItemPanel>
               </AccordionItem>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span className="category left">Specializations</span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <Checkbox label="Computational Perception & Robotics" onFilter={this.onFilter} />
-                    <Checkbox label="Computing Systems" onFilter={this.onFilter} />
-                    <Checkbox label="Interactive Intelligence" onFilter={this.onFilter} />
-                    <Checkbox label="Machine Learning" onFilter={this.onFilter} />
-                  </AccordionItemPanel>
-                </AccordionItem>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span className="category left">Rating</span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <Checkbox label="Over 4 Stars" onFilter={this.onFilter} />
-                    <Checkbox label="Over 3 Stars" onFilter={this.onFilter} />
-                    <Checkbox label="Over 2 Stars" onFilter={this.onFilter} />
-                    </AccordionItemPanel>
-                  </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <span className="category left">Rating</span>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <Checkbox label="Over 4 Stars" onFilter={this.onFilter} />
+                  <Checkbox label="Over 3 Stars" onFilter={this.onFilter} />
+                  <Checkbox label="Over 2 Stars" onFilter={this.onFilter} />
+                </AccordionItemPanel>
+              </AccordionItem>
             </Accordion>
           </div>
           </div>

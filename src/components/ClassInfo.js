@@ -69,6 +69,7 @@ var ClassInfo = createClass({
 					images += '<img src="./images/command_console_Blue.png" width="40" height="35" alt="'+skills[i]+'"> ';
 					break;
 				}
+				default: { break; }
 			}
 		}
 		return {__html: images};
@@ -97,6 +98,7 @@ var ClassInfo = createClass({
 					images += '<img src="./images/robot_Blue.png" width="40" height="35" alt="'+topics[i]+'"> ';
 					break;
 				}
+				default: { break; }
 			}
 		}
 		return {__html: images};
@@ -129,9 +131,20 @@ var ClassInfo = createClass({
 					images += '<img src="./images/online_video_Blue.png" width="40" height="35" alt="'+content[i]+'"> ';
 					break;
 				}
+				default: { break; }
 			}
 		}
 		return {__html: images};
+	},
+	printDegrees(degrees) {
+		var list = "";
+		for (var i=0; i < degrees.length; i++) {
+			list += degrees[i];
+			if (degrees.length - 1 !== i) {
+				list += ", ";
+			}
+		}
+		return list;
 	},
 	render() {
 		if (this.props.options != null) {
@@ -182,6 +195,7 @@ var ClassInfo = createClass({
 					<tbody>
 						<tr>
 							<td className="top">
+								<p className="small-text">{this.printDegrees(degrees)}</p>
 								<p className="small-text">{description}</p>
 							</td>
 							<td width="150px">

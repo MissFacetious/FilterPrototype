@@ -64,8 +64,8 @@ class App extends Component {
       }
     }
 
-    for (var f=0; f < currentFilters.length; f++) {
-      newCurrentFilters.push(currentFilters[f]);
+    for (var c=0; c < currentFilters.length; c++) {
+      newCurrentFilters.push(currentFilters[c]);
     }
 
     var newClasses = [];
@@ -92,36 +92,36 @@ class App extends Component {
             newClasses.push(course);
           }
         }
-        if (newCurrentFilters[f] == "Over 2 Stars" && course.rating > 2) {
+        if (newCurrentFilters[f] === "Over 2 Stars" && course.rating > 2) {
           if (!this.alreadyIn(newClasses, course)) {
             newClasses.push(course);
           }
         }
-        if (newCurrentFilters[f] == "Over 3 Stars" && course.rating > 3) {
+        if (newCurrentFilters[f] === "Over 3 Stars" && course.rating > 3) {
           if (!this.alreadyIn(newClasses, course)) {
             newClasses.push(course);
           }
         }
-        if (newCurrentFilters[f] == "Over 4 Stars" && course.rating > 4) {
+        if (newCurrentFilters[f] === "Over 4 Stars" && course.rating > 4) {
           if (!this.alreadyIn(newClasses, course)) {
             newClasses.push(course);
             console.log("add over 4 stars" + course.key);
           }
         }
         // if the amount of people enrolled is less than the class size, we have room
-        if (newCurrentFilters[f] == "Space Available" && course.enrolled < course.classSize) {
+        if (newCurrentFilters[f] === "Space Available" && course.enrolled < course.classSize) {
           newClasses.push(course);
         }
         // if the amoutn of people enrolled is equal or more than the class size,
         // check the waitlist has room
-        if (newCurrentFilters[f] == "Waiting List Only" && course.enrolled >= course.classSize && (course.enrolled < (course.waitingList + course.classSize))) {
+        if (newCurrentFilters[f] === "Waiting List Only" && course.enrolled >= course.classSize && (course.enrolled < (course.waitingList + course.classSize))) {
           newClasses.push(course);
         }
       }
     }
 
     // this return all even when our filter has none, maybe take care of this case?
-    if (newClasses.length == 0) {
+    if (newClasses.length === 0) {
       // default to all
       newClasses = Classes;
     }
@@ -141,7 +141,7 @@ class App extends Component {
   addClass(value) {
     // add the class they want to the list
     var classArray = this.state.takingClasses;
-    if (classArray.length == 0) classArray = [];
+    if (classArray.length === 0) classArray = [];
 
     // check for duplicate class
     if (!this.findClass(this.state.takingClasses, value)) {
@@ -161,7 +161,7 @@ class App extends Component {
     var myCourse = null;
     for (var i=0; i < classes.length; i++) {
       var course = classes[i];
-      if (course.label == value) {
+      if (course.label === value) {
         myCourse = course;
       }
     }
@@ -179,7 +179,7 @@ class App extends Component {
     var myFilter = null;
     for (var i=0; i < filters.length; i++) {
       var filter = filters[i];
-      if (filter == value) {
+      if (filter === value) {
         myFilter = filter;
       }
     }
@@ -188,7 +188,7 @@ class App extends Component {
 
   alreadyIn(classes, course) {
     for (var i=0; i < classes.length; i++) {
-      if (course == classes[i]) {
+      if (course === classes[i]) {
         return true;
       }
     }
@@ -223,8 +223,8 @@ class App extends Component {
         removeClass={this.addClass} />
     );
     var plural = "";
-    if (listItems.length == 0) plural = "Returned No Classes";
-    else if (listItems.length == 1) plural = "Returned " + listItems.length + " Class";
+    if (listItems.length === 0) plural = "Returned No Classes";
+    else if (listItems.length === 1) plural = "Returned " + listItems.length + " Class";
     else plural = "Returned " + listItems.length + " Classes";
 
     return (

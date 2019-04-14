@@ -1,6 +1,5 @@
 import React from 'react';
 import createClass from 'create-react-class';
-import PropTypes from 'prop-types';
 import './../App.css';
 
 var Checkbox = createClass({
@@ -15,11 +14,10 @@ var Checkbox = createClass({
   },
 
   render() {
-		var msg;
 		if (this.state.checked) {
-			msg = "checked";
+		// checked
 		} else {
-			msg = "unchecked";
+		// unchecked
 		}
     var label = this.props.label;
 	  return (

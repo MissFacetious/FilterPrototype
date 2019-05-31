@@ -9,9 +9,6 @@ var Search = createClass({
   },
 
   onSearch ({target}) {
-      //this.setState({ value });
-      console.log("value in Search");
-      //console.log(target.value);
       this.props.onSearch(target.value);
   },
 

@@ -25,33 +25,18 @@ var ClassInfo = createClass({
 		star += '</span>'
 		return {__html: star};
 	},
-	printCategories(category) {
-		var images = '';
-		for (var i=0; i < category.length; i++) {
-			switch (category[i]) {
-				case "Writing": {
-					images += '<img src="./images/book_writing_Blue.png" width="40" height="35" alt="'+category[i]+'"> ';
-					break;
-				}
-				default: { break; }
-			}
-		}
-		return {__html: images};
-	},
 	render() {
 		if (this.props.options != null) {
-			var label = this.props.options.label;
+			var name = this.props.options.name;
 			var image = "./images/"+this.props.options.icon;
-			var category = this.props.options.category;
-			var color = this.props.options.color;
+			//var category = this.props.options.category;
 			var rating = this.props.options.rating;
 			var price = this.props.options.price;
 			var description = this.props.options.description;
-
 			var itemsLeft = this.props.options.itemsLeft;
 
 			var availableMessage = "";
-			if (itemsLeft == 0) {
+			if (itemsLeft === 0) {
 				// the class is full
 				availableMessage = "Sold Out!";
 			}
@@ -64,27 +49,22 @@ var ClassInfo = createClass({
 				<div className="entry">
 					<div className="grid-three">
 						<div className="grid-three-columns image">
-							<img className="image" src={image} />
+							<img className="image" alt={name} src={image} />
 						</div>
 						<div className="grid-three-columns content">
 							<div className="grid-two grid-full">
 								<div className="grid-two-columns">
-									<p className="name left">{label}</p>
+									<p className="name left">{name}</p>
 								</div>
 								<div className="grid-two-columns right">
 									<span dangerouslySetInnerHTML={this.printRating(rating)} />
-
 								</div>
 							</div>
-
 							<p className="small-text">{description}</p>
-
-							<p className="right"><span dangerouslySetInnerHTML={this.printCategories(category)}></span></p>
-
 						</div>
 						<div className="grid-three-columns button-click">
 							<p className="price center">${price}</p>
-							<input className="button-click" data-value={label} type="button" value="Add To Cart" onClick={this.handleClick} />
+							<input className="button-click" data-value={name} type="button" value="Add To Cart" onClick={this.handleClick} />
 							<p className="other-text right">{availableMessage}</p>
 						</div>
 					</div>

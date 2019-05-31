@@ -42,7 +42,6 @@ class App extends Component {
     // add filter to the list of things to filter
     var currentFilters = this.state.filter;
     var newCurrentFilters = [];
-    //console.log(filter);
 
     // find out if the filter is adding or removing
     if (include) {
@@ -68,12 +67,7 @@ class App extends Component {
       var item = Items[i];
       for (var f=0; f < newCurrentFilters.length; f++) {
         if (item.category.includes(newCurrentFilters[f])) {
-          if (!this.findItem(newItems, item.label)) {
-            newItems.push(item);
-          }
-        }
-        if (item.color.includes(newCurrentFilters[f])) {
-          if (!this.findItem(newItems, item.label)) {
+          if (!this.findItem(newItems, item.key)) {
             newItems.push(item);
           }
         }
@@ -90,7 +84,6 @@ class App extends Component {
         if (newCurrentFilters[f] === "Over 4 Stars" && item.rating > 4) {
           if (!this.alreadyIn(newItems, item)) {
             newItems.push(item);
-            console.log("add over 4 stars" + item.key);
           }
         }
         if (newCurrentFilters[f] === "Over $500" && item.price > 500) {
@@ -133,11 +126,11 @@ class App extends Component {
     this.setState({items: newItems, filter: newCurrentFilters});
   }
 
-  findItem(items, value) {
+  findItem(items, key) {
     var myitem = null;
     for (var i=0; i < items.length; i++) {
       var item = items[i];
-      if (item.label === value) {
+      if (item.key === key) {
         myitem = item;
       }
     }
@@ -170,7 +163,6 @@ class App extends Component {
       var element = list[l];
       element.checked = false;
     }
-    //this.onFilter("", false);
     this.onSearch("");
   }
 
@@ -187,7 +179,7 @@ class App extends Component {
 
     var plural = "";
     if (listItems.length === 0) plural = "Returned No Items";
-    else if (listItems.length === 1) plural = "Returned " + listItems.length + " Class";
+    else if (listItems.length === 1) plural = "Returned " + listItems.length + " Item";
     else plural = "Returned " + listItems.length + " Items";
 
     return (
@@ -200,7 +192,7 @@ class App extends Component {
               </div>
             </div>
             <div className="heading-grid-column">
-              <Search options={this.state.items} onSearch={this.onSearch} value="Computers" />
+              <Search options={this.state.items} onSearch={this.onSearch} value="" />
             </div>
           </div>
         </div>
@@ -225,22 +217,6 @@ class App extends Component {
                   <Checkbox label="Books" onFilter={this.onFilter} />
                   <Checkbox label="Toys" onFilter={this.onFilter} />
                   <Checkbox label="School" onFilter={this.onFilter} />
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    <span className="category left">Color</span>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <Checkbox label="Red" onFilter={this.onFilter} />
-                  <Checkbox label="Blue" onFilter={this.onFilter} />
-                  <Checkbox label="Yellow" onFilter={this.onFilter} />
-                  <Checkbox label="Orange" onFilter={this.onFilter} />
-                  <Checkbox label="Green" onFilter={this.onFilter} />
-                  <Checkbox label="Purple" onFilter={this.onFilter} />
-                  <Checkbox label="Black" onFilter={this.onFilter} />
                 </AccordionItemPanel>
               </AccordionItem>
               <AccordionItem>

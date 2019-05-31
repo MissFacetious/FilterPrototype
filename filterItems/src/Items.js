@@ -1,7 +1,6 @@
 const Classes = [
   {
     key: 1,
-    label: "Mobile Phone",
     name: "Mobile Phone",
     icon: "phone.png",
     category: ["Electronics"],
@@ -13,7 +12,6 @@ const Classes = [
   },
   {
     key: 2,
-    label: "Computer Monitor",
     name: "Computer Monitor",
     icon: "computer.png",
     category: ["Electronics"],
@@ -25,7 +23,6 @@ const Classes = [
   },
   {
     key: 3,
-    label: "Book",
     name: "Book",
     icon: "book.png",
     category: ["Books"],
@@ -37,7 +34,6 @@ const Classes = [
   },
   {
     key: 4,
-    label: "Item Name",
     name: "Item Name",
     icon: "books.png",
     category: ["Books"],
@@ -49,7 +45,6 @@ const Classes = [
   },
   {
     key: 5,
-    label: "Item Name",
     name: "Item Name",
     icon: "calculator.png",
     category: ["Electronics"],
@@ -61,7 +56,6 @@ const Classes = [
   },
   {
     key: 6,
-    label: "Item Name",
     name: "Item Name",
     icon: "art.png",
     category: ["School"],
@@ -73,7 +67,6 @@ const Classes = [
   },
   {
     key: 7,
-    label: "Item Name",
     name: "Item Name",
     icon: "game.png",
     category: ["Electronics"],
@@ -85,7 +78,6 @@ const Classes = [
   },
   {
     key: 8,
-    label: "Item Name",
     name: "Item Name",
     icon: "video.png",
     category: ["Electronics"],
@@ -97,7 +89,6 @@ const Classes = [
   },
   {
     key: 9,
-    label: "Item Name",
     name: "Item Name",
     icon: "glasses.png",
     category: ["Books", "School"],
@@ -109,7 +100,6 @@ const Classes = [
   },
   {
     key: 10,
-    label: "Item Name",
     name: "Item Name",
     icon: "puzzle.png",
     category: ["Toys"],
@@ -121,7 +111,6 @@ const Classes = [
   },
   {
     key: 11,
-    label: "Item Name",
     name: "Item Name",
     icon: "robot.png",
     category: ["Electronics", "Toys"],
@@ -133,7 +122,6 @@ const Classes = [
   },
   {
     key: 12,
-    label: "Item Name",
     name: "Item Name",
     icon: "laptop.png",
     category: ["Electronics"],
@@ -145,7 +133,6 @@ const Classes = [
   },
   {
     key: 13,
-    label: "Item Name",
     name: "Item Name",
     icon: "vr.png",
     category: ["Electronics", "Toys"],

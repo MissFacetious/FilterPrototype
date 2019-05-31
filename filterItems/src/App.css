@@ -1,0 +1,197 @@
+p {
+  margin: 0px;
+}
+
+input {
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.entry {
+  padding-top: 20px;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.category {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.name {
+  font-size: 1.75em;
+  font-weight: 700;
+}
+
+.price {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.other-text {
+  font-size: 0.6em;
+  color: #999;
+}
+
+.small-text {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.left-line {
+  border-left: 1px solid #999;
+  padding-left: 10px;
+}
+
+.top {
+  padding-top: 10px;
+}
+
+.border {
+  border-color: black;
+}
+
+.center {
+  margin: 0;
+  align-content: center;
+  text-align: center;
+}
+
+.vcenter {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.background {
+  background: #fff;
+  height: 100%;
+  min-height: 100vh;
+  margin-top: 0px !important;
+}
+
+.heading {
+  background: #347FA6;
+  width: 100%;
+  height: 100px;
+  color: #fff;
+  position: fixed;
+}
+
+.heading-behind {
+  height: 100px;
+}
+
+.allshade {
+  background: #F6F6F6;
+}
+
+.heading-grid {
+  display: grid;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
+}
+
+.heading-grid-column {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+.one {
+  margin: auto;
+  width: 70%;
+}
+
+.results {
+  width: 100%;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+
+}
+
+.content {
+  width: 400px;
+}
+
+.grid-two {
+  display: grid;
+  width: 70%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
+}
+
+.grid-squish {
+  width: 70%;
+}
+
+.grid-full {
+  width: 100%;
+}
+
+.grid-two-column {
+  padding: 10px;
+}
+
+.grid-three {
+  display: grid;
+  width: 100%;
+  margin: auto;
+  grid-template-columns: repeat(3, auto);
+}
+
+.grid-three-column {
+  padding: 10px;
+}
+
+.large-input {
+  width: 400px;
+  height: 25px;
+}
+
+.search-input {
+  padding-left: 10px;
+}
+
+.button-click {
+  width: 150px;
+  height: 30px;
+  font-size: 1.1em;
+}
+
+.small-input {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+}
+
+.over {
+  margin-left: 20px;
+}
+
+
+
+.hidden {
+  display: none;
+}

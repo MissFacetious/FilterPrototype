@@ -51,12 +51,12 @@ var ClassInfo = createClass({
 			var itemsLeft = this.props.options.itemsLeft;
 
 			var availableMessage = "";
-			if (10 > itemsLeft) {
-				availableMessage = "Only " + itemsLeft + " left!";
-			}
-			else if (itemsLeft == 0) {
+			if (itemsLeft == 0) {
 				// the class is full
 				availableMessage = "Sold Out!";
+			}
+			else if (10 > itemsLeft) {
+				availableMessage = "Only " + itemsLeft + " left!";
 			}
 
 			// use the ul and li tags for creating rows and columns in the view

@@ -29,9 +29,9 @@ class App extends Component {
     // do we include the filtered results too?
     var newItems = [];
     for (var i=0; i < Items.length; i++) {
-      var course = Items[i];
-      if (course.name.includes(search)) {
-        newItems.push(course);
+      var item = Items[i];
+      if (item.name.includes(search)) {
+        newItems.push(item);
       }
     }
     this.setState({items: newItems});
@@ -65,52 +65,62 @@ class App extends Component {
 
     var newItems = [];
     for (var i=0; i < Items.length; i++) {
-      var course = Items[i];
+      var item = Items[i];
       for (var f=0; f < newCurrentFilters.length; f++) {
-        if (course.content.includes(newCurrentFilters[f])) {
-          if (!this.findClass(newItems, course.label)) {
-            newItems.push(course);
+        if (item.category.includes(newCurrentFilters[f])) {
+          if (!this.findClass(newItems, item.label)) {
+            newItems.push(item);
           }
         }
-        if (course.skills.includes(newCurrentFilters[f])) {
-          if (!this.findClass(newItems, course.label)) {
-            newItems.push(course);
+        if (item.color.includes(newCurrentFilters[f])) {
+          if (!this.findClass(newItems, item.label)) {
+            newItems.push(item);
           }
         }
-        if (course.topics.includes(newCurrentFilters[f])) {
-          if (!this.findClass(newItems, course.label)) {
-            newItems.push(course);
+        if (newCurrentFilters[f] === "Over 2 Stars" && item.rating > 2) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
           }
         }
-        if (course.degrees.includes(newCurrentFilters[f])) {
-          if (!this.findClass(newItems, course.label)) {
-            newItems.push(course);
+        if (newCurrentFilters[f] === "Over 3 Stars" && item.rating > 3) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
           }
         }
-        if (newCurrentFilters[f] === "Over 2 Stars" && course.rating > 2) {
-          if (!this.alreadyIn(newItems, course)) {
-            newItems.push(course);
+        if (newCurrentFilters[f] === "Over 4 Stars" && item.rating > 4) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
+            console.log("add over 4 stars" + item.key);
           }
         }
-        if (newCurrentFilters[f] === "Over 3 Stars" && course.rating > 3) {
-          if (!this.alreadyIn(newItems, course)) {
-            newItems.push(course);
+        if (newCurrentFilters[f] === "Over $500" && item.price > 500) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
           }
         }
-        if (newCurrentFilters[f] === "Over 4 Stars" && course.rating > 4) {
-          if (!this.alreadyIn(newItems, course)) {
-            newItems.push(course);
-            console.log("add over 4 stars" + course.key);
+        if (newCurrentFilters[f] === "$100-$500" && item.price < 500 && item.price > 100) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
+          }
+        }
+        if (newCurrentFilters[f] === "$50-$100" && item.price < 100 && item.price > 50) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
+          }
+        }
+        if (newCurrentFilters[f] === "$10-$50" && item.price < 50 && item.price > 10) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
+          }
+        }
+        if (newCurrentFilters[f] === "Less than $10" && item.price < 10 && item.price > 0) {
+          if (!this.alreadyIn(newItems, item)) {
+            newItems.push(item);
           }
         }
         // if the amount of people enrolled is less than the class size, we have room
-        if (newCurrentFilters[f] === "Space Available" && course.enrolled < course.classSize) {
-          newItems.push(course);
-        }
-        // if the amoutn of people enrolled is equal or more than the class size,
-        // check the waitlist has room
-        if (newCurrentFilters[f] === "Waiting List Only" && course.enrolled >= course.classSize && (course.enrolled < (course.waitingList + course.classSize))) {
-          newItems.push(course);
+        if (newCurrentFilters[f] === "In Stock" && item.itemsLeft > 0) {
+          newItems.push(item);
         }
       }
     }
@@ -134,14 +144,14 @@ class App extends Component {
   }
 
   findClass(items, value) {
-    var myCourse = null;
+    var myitem = null;
     for (var i=0; i < items.length; i++) {
-      var course = items[i];
-      if (course.label === value) {
-        myCourse = course;
+      var item = items[i];
+      if (item.label === value) {
+        myitem = item;
       }
     }
-    return myCourse;
+    return myitem;
   }
 
   findFilter(filters, value) {
@@ -155,9 +165,9 @@ class App extends Component {
     return myFilter;
   }
 
-  alreadyIn(items, course) {
+  alreadyIn(items, item) {
     for (var i=0; i < items.length; i++) {
-      if (course === items[i]) {
+      if (item === items[i]) {
         return true;
       }
     }
@@ -219,8 +229,9 @@ class App extends Component {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   <Checkbox label="Electronics" onFilter={this.onFilter} />
-                  <Checkbox label="Clothes" onFilter={this.onFilter} />
-                  <Checkbox label="Food" onFilter={this.onFilter} />
+                  <Checkbox label="Books" onFilter={this.onFilter} />
+                  <Checkbox label="Toys" onFilter={this.onFilter} />
+                  <Checkbox label="School" onFilter={this.onFilter} />
                 </AccordionItemPanel>
               </AccordionItem>
               <AccordionItem>

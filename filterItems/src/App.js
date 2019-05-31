@@ -17,7 +17,7 @@ class App extends Component {
       filter: []
     };
 
-    this.findClass = this.findClass.bind(this);
+    this.findItem = this.findItem.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onFilter = this.onFilter.bind(this);
     this.findFilter = this.findFilter.bind(this);
@@ -68,12 +68,12 @@ class App extends Component {
       var item = Items[i];
       for (var f=0; f < newCurrentFilters.length; f++) {
         if (item.category.includes(newCurrentFilters[f])) {
-          if (!this.findClass(newItems, item.label)) {
+          if (!this.findItem(newItems, item.label)) {
             newItems.push(item);
           }
         }
         if (item.color.includes(newCurrentFilters[f])) {
-          if (!this.findClass(newItems, item.label)) {
+          if (!this.findItem(newItems, item.label)) {
             newItems.push(item);
           }
         }
@@ -133,17 +133,7 @@ class App extends Component {
     this.setState({items: newItems, filter: newCurrentFilters});
   }
 
-  onClose() {
-    var element = document.getElementById("panel");
-    element.style.display = 'none';
-  }
-
-  onShow() {
-    var element = document.getElementById("panel");
-    element.style.display = 'block';
-  }
-
-  findClass(items, value) {
+  findItem(items, value) {
     var myitem = null;
     for (var i=0; i < items.length; i++) {
       var item = items[i];
@@ -219,7 +209,10 @@ class App extends Component {
           <div className="grid-two-column top">
           <div className="box border shade3">
             <p className="title">Filter</p>
-            <input className="button-click" type="button" value="Clear All" onClick={this.clearAll} />
+            <div className="center entry">
+              <input className="button-click" type="button" value="Clear All" onClick={this.clearAll} />
+            </div>
+            <div className="entry">
             <Accordion allowZeroExpanded="true">
               <AccordionItem>
                 <AccordionItemHeading>
@@ -250,7 +243,6 @@ class App extends Component {
                   <Checkbox label="Black" onFilter={this.onFilter} />
                 </AccordionItemPanel>
               </AccordionItem>
-
               <AccordionItem>
                 <AccordionItemHeading>
                   <AccordionItemButton>
@@ -290,11 +282,18 @@ class App extends Component {
             </Accordion>
           </div>
           </div>
+          </div>
           <div className="grid-two-column top">
             <div className="listitem">
       				<div className="box shade2 left-line">
-      					<p className="title">Results</p>
-                <p>{plural}</p>
+                <div className="grid-two grid-full">
+                  <div className="grid-two-columns left">
+      					    <p className="title">Results</p>
+                  </div>
+                  <div className="grid-two-columns right">
+                    <p>{plural}</p>
+                  </div>
+                </div>
       					<div className="results">{listItems}</div>
       				</div>
             </div>

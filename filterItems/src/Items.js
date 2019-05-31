@@ -34,7 +34,7 @@ const Classes = [
   },
   {
     key: 4,
-    name: "Item Name",
+    name: "Book Set",
     icon: "books.png",
     category: ["Books"],
     color: ["Black"],
@@ -45,7 +45,7 @@ const Classes = [
   },
   {
     key: 5,
-    name: "Item Name",
+    name: "Calculator",
     icon: "calculator.png",
     category: ["Electronics"],
     color: ["Black"],
@@ -56,7 +56,7 @@ const Classes = [
   },
   {
     key: 6,
-    name: "Item Name",
+    name: "Art Palette",
     icon: "art.png",
     category: ["School"],
     color: ["Black"],
@@ -67,7 +67,7 @@ const Classes = [
   },
   {
     key: 7,
-    name: "Item Name",
+    name: "Video Game",
     icon: "game.png",
     category: ["Electronics"],
     color: ["Black"],
@@ -78,7 +78,7 @@ const Classes = [
   },
   {
     key: 8,
-    name: "Item Name",
+    name: "DVD",
     icon: "video.png",
     category: ["Electronics"],
     color: ["Black"],
@@ -89,7 +89,7 @@ const Classes = [
   },
   {
     key: 9,
-    name: "Item Name",
+    name: "Glasses",
     icon: "glasses.png",
     category: ["Books", "School"],
     color: ["Black"],
@@ -100,7 +100,7 @@ const Classes = [
   },
   {
     key: 10,
-    name: "Item Name",
+    name: "Puzzle",
     icon: "puzzle.png",
     category: ["Toys"],
     color: ["Black"],
@@ -111,7 +111,7 @@ const Classes = [
   },
   {
     key: 11,
-    name: "Item Name",
+    name: "Robot",
     icon: "robot.png",
     category: ["Electronics", "Toys"],
     color: ["Black"],
@@ -122,7 +122,7 @@ const Classes = [
   },
   {
     key: 12,
-    name: "Item Name",
+    name: "Laptop",
     icon: "laptop.png",
     category: ["Electronics"],
     color: ["Black"],

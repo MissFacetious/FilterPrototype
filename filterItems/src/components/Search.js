@@ -22,7 +22,7 @@ var Search = createClass({
   render() {
     return (
       <div className="center vcenter">
-        <input id="searchValue" className="large-input search-input" type="text" placeholder="Type to Search..." onChange={this.onSearch} />
+        <input id="searchValue" className="large-input search-input" type="text" placeholder="Type to Search..." />
         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <input className="button-click" type="submit" value="Search" onClick={this.clickSearch} />
       </div>

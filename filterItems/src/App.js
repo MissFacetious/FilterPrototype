@@ -30,7 +30,7 @@ class App extends Component {
     var newItems = [];
     for (var i=0; i < Items.length; i++) {
       var item = Items[i];
-      if (item.name.includes(search)) {
+      if (item.name.toLowerCase().includes(search.toLowerCase())) {
         newItems.push(item);
       }
     }
@@ -197,76 +197,76 @@ class App extends Component {
           </div>
         </div>
         <div className="heading-behind" />
-        <div className="grid-two grid-squish allshade">
-          <div className="grid-two-column top">
-          <div className="box border shade3">
-            <p className="title">Filter</p>
-            <div className="center entry">
-              <input className="button-click" type="button" value="Clear All" onClick={this.clearAll} />
+          <div className="grid-two grid-squish allshade">
+            <div className="grid-two-column allshade top">
+              <div className="box border shade3">
+                <p className="title">Filter</p>
+                <div className="center entry">
+                  <input className="button-click" type="button" value="Clear All" onClick={this.clearAll} />
+                </div>
+                <div className="entry">
+                <Accordion allowZeroExpanded="true">
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <span className="category left">Category</span>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <Checkbox label="Electronics" onFilter={this.onFilter} />
+                      <Checkbox label="Books" onFilter={this.onFilter} />
+                      <Checkbox label="Toys" onFilter={this.onFilter} />
+                      <Checkbox label="School" onFilter={this.onFilter} />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <span className="category left">Availabity</span>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <Checkbox label="In Stock" onFilter={this.onFilter} />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <span className="category left">Price</span>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <Checkbox label="Over $500" onFilter={this.onFilter} />
+                      <Checkbox label="$100-$500" onFilter={this.onFilter} />
+                      <Checkbox label="$50-$100" onFilter={this.onFilter} />
+                      <Checkbox label="$10-$50" onFilter={this.onFilter} />
+                      <Checkbox label="Less than $10" onFilter={this.onFilter} />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <span className="category left">Rating</span>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <Checkbox label="Over 4 Stars" onFilter={this.onFilter} />
+                      <Checkbox label="Over 3 Stars" onFilter={this.onFilter} />
+                      <Checkbox label="Over 2 Stars" onFilter={this.onFilter} />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                </Accordion>
+              </div>
             </div>
-            <div className="entry">
-            <Accordion allowZeroExpanded="true">
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    <span className="category left">Category</span>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <Checkbox label="Electronics" onFilter={this.onFilter} />
-                  <Checkbox label="Books" onFilter={this.onFilter} />
-                  <Checkbox label="Toys" onFilter={this.onFilter} />
-                  <Checkbox label="School" onFilter={this.onFilter} />
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    <span className="category left">Availabity</span>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <Checkbox label="In Stock" onFilter={this.onFilter} />
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    <span className="category left">Price</span>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <Checkbox label="Over $500" onFilter={this.onFilter} />
-                  <Checkbox label="$100-$500" onFilter={this.onFilter} />
-                  <Checkbox label="$50-$100" onFilter={this.onFilter} />
-                  <Checkbox label="$10-$50" onFilter={this.onFilter} />
-                  <Checkbox label="Less than $10" onFilter={this.onFilter} />
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    <span className="category left">Rating</span>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <Checkbox label="Over 4 Stars" onFilter={this.onFilter} />
-                  <Checkbox label="Over 3 Stars" onFilter={this.onFilter} />
-                  <Checkbox label="Over 2 Stars" onFilter={this.onFilter} />
-                </AccordionItemPanel>
-              </AccordionItem>
-            </Accordion>
           </div>
-          </div>
-          </div>
-          <div className="grid-two-column top">
+          <div className="grid-two-column allshade top">
             <div className="listitem">
       				<div className="box shade2 left-line">
                 <div className="grid-two grid-full">
                   <div className="grid-two-columns left">
       					    <p className="title">Results</p>
                   </div>
-                  <div className="grid-two-columns right">
+                  <div className="grid-two-columns allshade right">
                     <p>{plural}</p>
                   </div>
                 </div>

@@ -133,7 +133,7 @@ const Classes = [
   },
   {
     key: 13,
-    name: "Item Name",
+    name: "Virtual Reality",
     icon: "vr.png",
     category: ["Electronics", "Toys"],
     color: ["Black"],

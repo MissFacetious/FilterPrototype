@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://missfacetious.github.io/FilterPrototype/",
   "dependencies": {
-    "create-react-class": "^15.6.3",
     "react": "^16.8.4",
     "react-accessible-accordion": "^3.0.0",
     "react-dom": "^16.8.4",

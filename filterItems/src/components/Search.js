@@ -1,23 +1,23 @@
-import React from 'react';
-import createClass from 'create-react-class';
+import React, { Component } from 'react';
 
-var Search = createClass({
+class Search extends Component {
+  constructor(props) {
+    super(props);
 
-    getInitialState () {
-      return {
-      };
-  },
+    this.onSearch = this.onSearch.bind(this)
+    this.clickSearch = this.clickSearch.bind(this)
+  }
 
   onSearch ({target}) {
       this.props.onSearch(target.value);
-  },
+  }
 
   clickSearch () {
     var element = document.getElementById("searchValue");
     if (element != null) {
       this.props.onSearch(element.value);
     }
-  },
+  }
 
   render() {
     return (
@@ -27,6 +27,6 @@ var Search = createClass({
         <input className="button-click" type="submit" value="Search" onClick={this.clickSearch} />
       </div>
     )}
-  });
+  }
 
 export default Search;

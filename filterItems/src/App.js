@@ -174,7 +174,8 @@ class App extends Component {
     const listItems = this.state.items.map((li) =>
       <ItemInfo
         key={li.key}
-        options={li} />
+        options={li}
+      />
     );
 
     var plural = "";
@@ -192,7 +193,11 @@ class App extends Component {
               </div>
             </div>
             <div className="heading-grid-column">
-              <Search options={this.state.items} onSearch={this.onSearch} value="" />
+              <Search
+                options={this.state.items}
+                onSearch={this.onSearch}
+                value=""
+              />
             </div>
           </div>
         </div>
@@ -267,10 +272,14 @@ class App extends Component {
       					    <p className="title">Results</p>
                   </div>
                   <div className="grid-two-columns allshade right">
-                    <p>{plural}</p>
+                    <p>
+                      {plural}
+                    </p>
                   </div>
                 </div>
-      					<div className="results">{listItems}</div>
+      					<div className="results">
+                  {listItems}
+                </div>
       				</div>
             </div>
           </div>

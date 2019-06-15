@@ -1,16 +1,14 @@
-import React from 'react';
-import createClass from 'create-react-class';
+import React, { Component } from 'react';
 
-var ClassInfo = createClass({
+class ItemInfo extends Component {
 
-	getInitialState () {
-		return {
-		};
-	},
+	constructor(props) {
+    super(props);
+	}
 
 	handleClick (event) {
     // button was clicked
-  },
+  }
 
 	printRating(rating) {
 		var star = '<span alt="rating ' + rating +' out of 5">';
@@ -24,7 +22,8 @@ var ClassInfo = createClass({
 		}
 		star += '</span>'
 		return {__html: star};
-	},
+	}
+
 	render() {
 		if (this.props.options != null) {
 			var name = this.props.options.name;
@@ -75,5 +74,5 @@ var ClassInfo = createClass({
 			return (<div></div>);
 		}
 	}
-});
-export default ClassInfo;
+}
+export default ItemInfo;

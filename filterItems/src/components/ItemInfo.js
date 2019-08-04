@@ -6,10 +6,6 @@ class ItemInfo extends Component {
     super(props);
 	}
 
-	handleClick (event) {
-    // button was clicked
-  }
-
 	printRating(rating) {
 		var star = '<span alt="rating ' + rating +' out of 5">';
 		for (var i=1; i <= 5; i++) {
@@ -25,53 +21,36 @@ class ItemInfo extends Component {
 	}
 
 	render() {
-		if (this.props.options != null) {
-			var name = this.props.options.name;
-			var image = "./images/"+this.props.options.icon;
-			//var category = this.props.options.category;
-			var rating = this.props.options.rating;
-			var price = this.props.options.price;
-			var description = this.props.options.description;
-			var itemsLeft = this.props.options.itemsLeft;
+		if (this.props.item != null) {
+			var image = "./images/"+this.props.item.icon;
+			var rating = this.props.item.rating;
 
-			var availableMessage = "";
-			if (itemsLeft === 0) {
-				// the class is full
-				availableMessage = "Sold Out!";
-			}
-			else if (10 > itemsLeft) {
-				availableMessage = "Only " + itemsLeft + " left!";
-			}
-
-			// use the ul and li tags for creating rows and columns in the view
 			return (
-				<div className="entry">
-					<div className="grid-three">
-						<div className="grid-three-columns image">
-							<img className="image" alt={name} src={image} />
-						</div>
-						<div className="grid-three-columns content">
-							<div className="grid-two grid-full">
-								<div className="grid-two-columns">
-									<p className="name left">{name}</p>
-								</div>
-								<div className="grid-two-columns right">
-									<span dangerouslySetInnerHTML={this.printRating(rating)} />
-								</div>
+				<div className="grid-result">
+					<div className="grid-result-column">
+						<img className="images" alt={this.props.item.name} src={image} />
+					</div>
+
+					<div className="grid-result-column">
+						<div className="grid-result-header">
+							<div className="grid-result-header-column">
+								<div className="header-text black-text font">{this.props.item.name}</div>
 							</div>
-							<p className="small-text">{description}</p>
+							<div className="grid-result-header-column">
+								<span dangerouslySetInnerHTML={this.printRating(rating)} />
+							</div>
 						</div>
-						<div className="grid-three-columns button-click">
-							<p className="price center">${price}</p>
-							<input className="button-click" data-value={name} type="button" value="Add To Cart" onClick={this.handleClick} />
-							<p className="other-text right">{availableMessage}</p>
-						</div>
+
+						<div className="small-text gray-text font">{this.props.item.description}</div>
+					</div>
+
+					<div className="grid-result-column">
+						<div className="header-text black-text font">${this.props.item.price}</div>
+						<div><br /></div>
+						<button className="button background-gray medium-text">Add to Cart</button>
 					</div>
 				</div>
-			);
-		}
-		else {
-			return (<div></div>);
+			)
 		}
 	}
 }

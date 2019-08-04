@@ -1,4 +1,4 @@
-const Classes = [
+const Items = [
   {
     key: 1,
     name: "Mobile Phone",
@@ -143,4 +143,4 @@ const Classes = [
     description: "This item is so awesome."
   },
 ];
-module.exports = Classes;
+module.exports = Items;

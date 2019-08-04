@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-import './../App.css';
-
 class Checkbox extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { checked: this.props.checked }
+
+    this.state = {
+      checked: this.props.checked
+    }
+
     this.onFilter = this.onFilter.bind(this)
   }
 
@@ -16,20 +18,19 @@ class Checkbox extends Component {
 
   render() {
     var label = this.props.label;
-	  return (
-	  	<p className="left entry">
-	    	<input
-          className="small-input check"
+    return (
+      <p>
+        <input
+          className="checkbox"
           type="checkbox"
           data-value={label}
           onChange={this.onFilter}
+          checked={this.state.checked}
           defaultChecked={this.state.checked}
         />
-        <span className="over">
-          {label}
-        </span>
-	    </p>
-	  );
+        {label}
+      </p>
+    );
 	}
 }
 
